@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>student book</title>
+    <style>
+        body {
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+    
+        #studentinput {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid grey  ;
+            border-radius: 5px;
+            width: 300px;
+            margin-right: 10px;
+        }
+    
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            border-radius: 15px;
+        }
+    
+        #container {
+            margin-top: 20px;
+            width: 50%;
+        }
+    
+        #container div {
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .card
+        {
+            padding: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .heading
+        {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Student Book</h1>
+<div class="card">
+<div>
+    <input type="text" placeholder="Enter Your Name" id="studentinput">
+    
+</div>
+    <div id="container"></div>
+    <div class="btn">
+        <button onclick="addStudent()">Add</button>
+        <button onclick="removeStudent()">Remove</button>
+    </div>
+</div>
+
+    <script>
+        const student = [];
+
+        function loadStudent() {
+            const studentcontainer = document.getElementById("container");
+            studentcontainer.innerHTML = "";
+            
+            for (let i = 0; i < student.length; i++) {
+                studentcontainer.innerHTML += `<div>${i +1}. ${student[i]}</div>`;
+            }
+        }
+
+        function addStudent() {
+            const studentsip = document.getElementById("studentinput");
+            student.push(studentsip.value);
+            studentsip.value = "";
+            loadStudent();
+        }
+
+        function removeStudent() {
+ 
+            const studentindex = student.indexOf(studentinput.value);
+            if (studentindex !== -1) {
+                student.splice(studentindex, 1);
+            }
+            studentinput.value = "";
+            loadStudent();
+        }
+    </script>
+    
+</body>
+</html>
